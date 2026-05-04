@@ -266,50 +266,8 @@ with tabs[2]:
         st.pyplot(fig_roc)
 
 # ---------------------------------------------------------
-# TAB 4: GIẢI THÍCH SHAP (XAI)
-# ---------------------------------------------------------
-with tabs[3]:
-    st.header("🔬 Explainable ML (SHAP Analysis)")
-    st.write("Phân tích giá trị SHAP để hiểu rõ các yếu tố dẫn đến quyết định rời bỏ của khách hàng.")
-    
-    # 1. Lấy mẫu dữ liệu nhỏ để tránh lỗi RAM trên Streamlit Cloud
-    X_shap = X_test.head(100) # Tăng lên 100 mẫu để biểu đồ mật độ (Beeswarm) nhìn đẹp hơn
-    
-    # 2. Khởi tạo Explainer và tính toán SHAP values
-    # Sử dụng check_additivity=False để tránh lỗi nhỏ về sai số dấu phẩy động trên Cloud
-    explainer = shap.TreeExplainer(xgb_model)
-    shap_values = explainer.shap_values(X_shap, check_additivity=False)
-    
-    # 3. FIX LỖI HIỂN THỊ: Tạo figure và xử lý plot
-    # Lưu ý quan trọng: SHAP summary_plot tự tạo figure nội bộ, 
-    # nên ta cần thiết lập kích thước qua plt.figure trước.
-    fig_shap = plt.figure(figsize=(12, 8))
-    
-    # Vẽ summary_plot (Dạng Beeswarm - dấu chấm màu xanh đỏ như trong file Python của bạn)
-    # Tham số show=False là bắt buộc để không bị treo app
-    shap.summary_plot(shap_values, X_shap, show=False)
-    
-    # Tinh chỉnh thẩm mỹ để giống y hệt bản gốc
-    plt.title("XGBoost Global Feature Importance (SHAP)", fontsize=15, pad=20)
-    plt.xlabel("SHAP value (tác động đến xác suất rời bỏ)", fontsize=12)
-    plt.grid(alpha=0.3) # Thêm lưới mờ cho chuyên nghiệp
-    
-    # 4. Hiển thị lên Streamlit
-    st.pyplot(fig_shap, clear_figure=True)
-    
-    # 5. Giải phóng bộ nhớ
-    plt.close(fig_shap)
 
-    st.info("""
-    **💡 Cụ thể:**
-    - **Màu Đỏ (High):** Giá trị biến cao. 
-    - **Màu Xanh (Low):** Giá trị biến thấp.
-    - Vị trí của cụm giá trị nói lên ảnh hưởng đối với output của bài toán.
-    """)
-# ---------------------------------------------------------
-# TAB 5: CHIẾN LƯỢC KINH DOANH
-# ---------------------------------------------------------
-with tabs[4]:
+with tabs[3]:
     st.header("🎯 Đề Xuất Chiến Lược Giữ Chân Khách Hàng")
     
     st.success("Dựa trên kết quả mô hình Stacking, chúng tôi đưa ra các khuyến nghị sau:")

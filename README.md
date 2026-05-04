@@ -1,4 +1,5 @@
 # 🏦 Vietnam Bank Churn Analysis & Early Warning System
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://vnbankchurnanalysis-p5zxcwwx8tbyctkrt6qsav.streamlit.app/)
 This project integrates T-SQL Analytics with Ensemble Learning to build an automated risk-forecasting system, analyzing behavioral patterns of 80,000 customers in the Vietnamese banking sector.
 
 # 🌟 Key Features

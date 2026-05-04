@@ -225,7 +225,7 @@ with tabs[1]:
 
     # 3. Phân bổ Số dư tài khoản (Balance)
     sns.boxplot(data=df_raw, x='exit', y='credit_sco', ax=axes[1, 0], palette='Set2')
-    axes[1, 0].set_title("3. Tương quan Số dư (Balance) và Exit", fontsize=12, fontweight='bold')
+    axes[1, 0].set_title("3. Tương quan Điểm Tín Dụng (Credit Score) và Exit", fontsize=12, fontweight='bold')
 
     # 4. Heatmap tương quan các biến số
     numeric_cols = df_ml.select_dtypes(include=[np.number]).columns

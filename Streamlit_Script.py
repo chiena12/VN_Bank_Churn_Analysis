@@ -142,13 +142,11 @@ with st.spinner("🚀 Đang khởi tạo mô hình AI chuyên sâu..."):
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/2830/2830284.png", width=120)
     st.header("Thông tin Dự án")
-    st.write(f"👤 **Author :** Chiến")
-    st.write(f"🏢 **Đơn vị:** FTU - International Business Economics")
+    st.write(f"👤 **Author :** Đức Chiến")
     st.markdown("---")
     st.subheader("Cấu hình Dữ liệu")
     st.write(f"✅ Tổng mẫu: `{len(df_raw)}` dòng")
     st.write(f"✅ Tỷ lệ Churn: `{y.mean():.1%}`")
-    st.success("App đã được tối ưu hóa cho Streamlit Cloud (1GB RAM)")
 
 # =========================================================
 # 5. MAIN CONTENT - HỆ THỐNG TABS TƯỜNG MINH
@@ -168,30 +166,49 @@ tabs = st.tabs([
 # TAB 1: TỔNG QUAN & KẾT QUẢ SQL
 # ---------------------------------------------------------
 with tabs[0]:
-    st.header("📌 Mục tiêu & Insight chính")
-    col1, col2 = st.columns([2, 1])
-    with col1:
+    st.header("🚀 Quy trình thực hiện Dự án (Project Workflow)")
+    
+    # Sử dụng cột để tạo cái nhìn tổng quan nhanh
+    col_goal, col_tech = st.columns([2, 1])
+    with col_goal:
         st.markdown("""
-        - **Mục tiêu:** Xác định các key features ảnh hưởng đến việc khách hàng đóng tài khoản.
-        - **Dữ liệu:** Vietnam Bank Churn Dataset 2025.
-        - **Phương pháp:** Phân tích SQL kết hợp Stacking Ensemble Learning.
+        **Mục tiêu chính:** Xây dựng hệ thống dự báo sớm (Early Warning System) giúp ngân hàng 
+        giảm thiểu tỷ lệ khách hàng rời bỏ thông qua dữ liệu hành vi.
         """)
-    with col2:
-        st.metric("Top Feature", "Customer Segment", delta="High Impact")
+    with col_tech:
+        st.info("**Tech Stack:** SQL, Python, LightGBM, Stacking")
 
-    st.subheader("💡 Key Insights từ SQL (Project Summary)")
-    st.info("""
-    * **Phân khúc (Customer Segment):** Là yếu tố then chốt nhất ở mọi mô hình.
-    * **Nghề nghiệp:** Nhóm khách hàng tự doanh có rủi ro rời bỏ cao hơn nhóm nhân viên văn phòng.
-    * **Độ trung thành:** Sự gắn kết qua các sản phẩm phụ (cross-selling) giúp giảm tỷ lệ exit rõ rệt.
-    """)
+    # Chia các bước lớn bằng expander hoặc markdown chuyên nghiệp
+    st.subheader("🛠️ Các giai đoạn triển khai")
 
+    with st.expander("1. Phân tích Insight & Khám phá dữ liệu (SQL Analytics)", expanded=True):
+        st.markdown("""
+        - **Data Source:** Truy vấn trực tiếp trên tập dữ liệu 80,000 khách hàng.
+        - **Phân tích:** Sử dụng **T-SQL** để bóc tách tỷ lệ Exit theo từng nhóm nhân khẩu học.
+        - **Kết quả:** Xác định **Customer Segment** và **Nghề nghiệp** là hai yếu tố then chốt gây ra rủi ro rời bỏ.
+        """)
+
+    with st.expander("2. Tiền xử lý & Kỹ thuật đặc trưng (Feature Engineering)"):
+        st.markdown("""
+        - **Cleaning:** Xử lý các cột dữ liệu thời gian (`last_active_date`, `created_date`) và làm sạch các giá trị nhiễu.
+        - **Transformation:** Chia nhóm tuổi (Gen Z, Millennials, Gen X, Boomers) để tăng độ nhạy cho mô hình.
+        - **Scale:** Xử lý mất cân bằng dữ liệu (Imbalanced Data) bằng cách điều chỉnh trọng số lớp (class weight).
+        """)
+
+    with st.expander("3. Huấn luyện mô hình & Tối ưu hóa (Model Training)"):
+        st.markdown("""
+        - **Mô hình:** Triển khai các thuật toán Boosting mạnh mẽ như **LightGBM** và **XGBoost**.
+        - **Stacking Ensemble:** Kết hợp các mô hình đơn lẻ thông qua **StackingClassifier** để tối ưu hóa độ chính xác và khả năng tổng quát hóa.
+        - **Tuning:** Sử dụng Randomized Search CV để tìm ra bộ siêu tham số (Hyperparameters) tốt nhất.
+        - **Metric:** Tập trung vào chỉ số **Recall** và **AUC-ROC** để đảm bảo không bỏ sót khách hàng có rủi ro cao.
+        """)
+
+    st.success("✅ **Kết luận:** Mô hình LightGBM được chọn làm nhân tố chính nhờ tốc độ xử lý nhanh và độ ổn định cao trên dữ liệu lớn.")
 # ---------------------------------------------------------
 # TAB 2: CHI TIẾT EDA (TÁI HIỆN SUBPLOTS)
 # ---------------------------------------------------------
 with tabs[1]:
     st.header("🎨 Phân Tích Trực Quan Hóa (EDA Dashboard)")
-    st.write("Tái hiện lại hệ thống subplots từ file Python.ipynb của bạn:")
 
     # HỆ THỐNG SUBPLOTS 2x2
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
@@ -318,4 +335,3 @@ with tabs[4]:
         - Cập nhật (Retrain) mô hình hàng quý để tránh hiện tượng trôi dạt dữ liệu (Data Drift).
         """)
     
-    st.balloons()

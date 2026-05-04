@@ -157,8 +157,7 @@ st.markdown("Dự án sử dụng học máy nâng cao để phân tích hành v
 tabs = st.tabs([
     "📂 Tổng quan & Insight", 
     "🎨 Phân tích EDA (Subplots)", 
-    "📊 Hiệu năng Mô hình", 
-    "🔬 Giải thích SHAP", 
+    "📊 Hiệu năng Mô hình",  
     "🎯 Chiến lược Business"
 ])
 

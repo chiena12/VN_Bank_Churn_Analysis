@@ -1,9 +1,10 @@
-kagglehub
+streamlit
 pandas
 numpy
 matplotlib
 seaborn
+kagglehub
 scikit-learn
-lightgbm
 xgboost
+lightgbm
 shap

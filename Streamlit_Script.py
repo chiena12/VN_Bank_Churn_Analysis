@@ -142,7 +142,7 @@ with st.spinner("🚀 Đang khởi tạo mô hình AI chuyên sâu..."):
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/2830/2830284.png", width=120)
     st.header("Thông tin Dự án")
-    st.write(f"👤 **Tác giả:** Chiến")
+    st.write(f"👤 **Author :** Chiến")
     st.write(f"🏢 **Đơn vị:** FTU - International Business Economics")
     st.markdown("---")
     st.subheader("Cấu hình Dữ liệu")
@@ -252,7 +252,7 @@ with tabs[2]:
 # TAB 4: GIẢI THÍCH SHAP (XAI)
 # ---------------------------------------------------------
 with tabs[3]:
-    st.header("🔬 Giải mã AI (Explainable AI)")
+    st.header("🔬 Explainable ML")
     st.write("SHAP giúp chúng ta hiểu lý do đằng sau các dự đoán của mô hình XGBoost.")
     
     # Tính SHAP cho 50 mẫu (để app chạy nhanh trên Cloud)
@@ -260,21 +260,31 @@ with tabs[3]:
     explainer = shap.TreeExplainer(xgb_model)
     shap_values = explainer.shap_values(X_shap)
     
-    col_s1, col_s2 = st.columns(2)
+# Tạo khung hình lớn hơn để biểu đồ summary hiện đầy đủ và đẹp
+    fig_shap, ax_shap = plt.subplots(figsize=(12, 8))
     
-    with col_s1:
-        st.subheader("Summary Plot (Tầm quan trọng)")
-        fig_s1, ax_s1 = plt.subplots()
-        shap.summary_plot(shap_values, X_shap, plot_type="bar", show=False)
-        st.pyplot(fig_s1)
-        plt.clf()
+    # Vẽ summary_plot (mặc định là Beeswarm plot)
+    # Nếu muốn đổi sang dạng thanh ngang đơn giản, thêm tham số plot_type="bar"
+    shap.summary_plot(shap_values, X_shap, show=False)
+    
+    # Tăng kích thước font cho các trục để dễ đọc trên web
+    plt.xticks(fontsize=10)
+    plt.yticks(fontsize=10)
+    plt.tight_layout()
+    
+    # Hiển thị lên Streamlit
+    st.pyplot(fig_shap)
+    
+    # Quan trọng: Giải phóng bộ nhớ sau khi vẽ
+    plt.clf()
+    plt.close()
 
-    with col_s2:
-        st.subheader("Beeswarm Plot (Tác động biến số)")
-        fig_s2, ax_s2 = plt.subplots()
-        shap.summary_plot(shap_values, X_shap, show=False)
-        st.pyplot(fig_s2)
-        plt.clf()
+    st.info("""
+    **Cách đọc biểu đồ:**
+    - **Trục tung (Y):** Các biến số được sắp xếp theo thứ tự quan trọng giảm dần từ trên xuống dưới.
+    - **Màu sắc:** Màu đỏ đại diện cho giá trị biến cao, màu xanh đại diện cho giá trị biến thấp.
+    - **Trục hoành (X):** SHAP Value dương (về bên phải) làm tăng khả năng khách hàng rời bỏ (Exit=1).
+    """)
 
 # ---------------------------------------------------------
 # TAB 5: CHIẾN LƯỢC KINH DOANH

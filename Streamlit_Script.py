@@ -276,7 +276,7 @@ with tabs[3]:
     with col1:
         st.info("**Nhóm Gen Z (27% exit_ratio):** Đây là nhóm có tỷ lệ rời bỏ cao nhất trong tập dữ liệu. Điều này phản ánh tâm lý ưa thích trải nghiệm mới và ít tính cam kết hơn các thế hệ trước.")
     with col2:
-        st.success("**Nhóm Boomers & Gen X:** Tỷ lệ rời bỏ duy trì ở mức thấp (~15-16%). Đây là nhóm khách hàng trung thành, ưu tiên sự ổn định và tin tưởng[cite: 3].")
+        st.success("**Nhóm Boomers & Gen X:** Tỷ lệ rời bỏ duy trì ở mức thấp (~15-16%). Đây là nhóm khách hàng trung thành, ưu tiên sự ổn định và tin tưởng.")
 
     st.divider()
 
@@ -285,15 +285,15 @@ with tabs[3]:
     
     with st.expander("🚀 Chiến lược cho Gen Z & Millenials (Nhóm rủi ro cao)"):
         st.write("""
-        *   **Cá nhân hóa trải nghiệm số:** Tăng cường tính năng trên App Mobile vì nhóm này có hành vi 'digital_behavior' cao[cite: 3].
+        *   **Cá nhân hóa trải nghiệm số:** Tăng cường tính năng trên App Mobile vì nhóm này có hành vi 'digital_behavior' cao.
         *   **Gamification:** Xây dựng hệ thống đổi điểm thưởng, săn voucher ngay trên ứng dụng để tăng 'engagement_score'.
         *   **Sản phẩm linh hoạt:** Cung cấp các gói vay tiêu dùng nhanh hoặc thẻ tín dụng ảo với thủ tục đơn giản.
         """)
 
     with st.expander("🛡️ Chiến lược cho Gen X & Boomers (Nhóm bền vững)"):
         st.write("""
-        *   **Chăm sóc đặc quyền:** Tập trung vào các gói bảo hiểm, hưu trí hoặc quản lý tài sản (Wealth Management) cho phân khúc 'Priority'[cite: 3].
-        *   **Hỗ trợ đa kênh:** Kết hợp hỗ trợ trực tiếp tại quầy và điện thoại, vì nhóm này vẫn duy trì hành vi 'offline'[cite: 3].
+        *   **Chăm sóc đặc quyền:** Tập trung vào các gói bảo hiểm, hưu trí hoặc quản lý tài sản (Wealth Management) cho phân khúc 'Priority'.
+        *   **Hỗ trợ đa kênh:** Kết hợp hỗ trợ trực tiếp tại quầy và điện thoại, vì nhóm này vẫn duy trì hành vi 'offline'.
         *   **Ưu đãi lòng trung thành:** Tăng lãi suất tiết kiệm bậc thang dựa trên `tenure_ye` (số năm gắn bó).
         """)
 
@@ -305,24 +305,24 @@ with tabs[3]:
     seg_col1, seg_col2, seg_col3 = st.columns(3)
     with seg_col1:
         st.markdown("### 💎 Priority")
-        st.write("Duy trì trạng thái 'Active Member' bằng các ưu đãi phòng chờ sân bay, thẻ đen[cite: 3].")
+        st.write("Duy trì trạng thái 'Active Member' bằng các ưu đãi phòng chờ sân bay, thẻ đen.")
     with seg_col2:
         st.markdown("### 📈 Emerging")
-        st.write("Kích thích sử dụng thêm dịch vụ (Cross-sell) để nâng hạng lên Priority[cite: 3].")
+        st.write("Kích thích sử dụng thêm dịch vụ (Cross-sell) để nâng hạng lên Priority.")
     with seg_col3:
         st.markdown("### 👥 Mass")
-        st.write("Tự động hóa chăm sóc qua chatbot để tối ưu chi phí nhưng vẫn đảm bảo kết nối[cite: 3].")
+        st.write("Tự động hóa chăm sóc qua chatbot để tối ưu chi phí nhưng vẫn đảm bảo kết nối.")
 
     st.divider()
 
     # 4. Đề xuất chiến lược tổng quát
     st.subheader("4. Đề xuất chiến lược phù hợp với phân tích")
-    st.warning("Dựa trên phân tích SHAP và rủi ro (Risk Score), ngân hàng cần lưu ý[cite: 3]:")
+    st.warning("Dựa trên phân tích SHAP và rủi ro (Risk Score), ngân hàng cần lưu ý:")
     
     st.write("""
-    *   **Giám sát biến động số dư (Balance):** Dữ liệu cho thấy những khách hàng có số dư thay đổi đột ngột thường có xu hướng rời bỏ. Cần thiết lập hệ thống cảnh báo sớm (Early Warning System)[cite: 3].
-    *   **Nâng cao chỉ số Engagement:** Tập trung vào những khách hàng có `engagement_score` thấp (dưới 40) bằng các chiến dịch Email Marketing cá nhân hóa[cite: 3].
-    *   **Ưu tiên khách hàng có rủi ro thấp (Low Risk Segment):** Tập trung nguồn lực giữ chân nhóm `Low Risk` nhưng đang có dấu hiệu giảm tương tác để bảo vệ nguồn doanh thu ổn định[cite: 3].
+    *   **Giám sát biến động số dư (Balance):** Dữ liệu cho thấy những khách hàng có số dư thay đổi đột ngột thường có xu hướng rời bỏ. Cần thiết lập hệ thống cảnh báo sớm (Early Warning System).
+    *   **Nâng cao chỉ số Engagement:** Tập trung vào những khách hàng có `engagement_score` thấp (dưới 40) bằng các chiến dịch Email Marketing cá nhân hóa.
+    *   **Ưu tiên khách hàng có rủi ro thấp (Low Risk Segment):** Tập trung nguồn lực giữ chân nhóm `Low Risk` nhưng đang có dấu hiệu giảm tương tác để bảo vệ nguồn doanh thu ổn định.
     """)
 
         

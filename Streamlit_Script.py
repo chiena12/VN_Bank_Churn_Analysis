@@ -266,32 +266,64 @@ with tabs[2]:
 
 # ---------------------------------------------------------
 
-with tabs[3]:
-    st.header("🎯 Đề Xuất Chiến Lược Giữ Chân Khách Hàng")
+with tab[3]:
+    st.header("🎯 CHIẾN LƯỢC GIỮ CHÂN KHÁCH HÀNG (RETENTION STRATEGY)")
     
-    st.success("Dựa trên kết quả mô hình Stacking, chúng tôi đưa ra các khuyến nghị sau:")
+    # 1. Phân tích từ dữ liệu (Insight Driven)
+    st.subheader("1. Những phát hiện quan trọng từ dữ liệu")
+    col1, col2 = st.columns(2)
     
-    col_b1, col_b2 = st.columns(2)
+    with col1:
+        st.info("**Nhóm Gen Z (27% exit_ratio):** Đây là nhóm có tỷ lệ rời bỏ cao nhất trong tập dữ liệu. Điều này phản ánh tâm lý ưa thích trải nghiệm mới và ít tính cam kết hơn các thế hệ trước.")
+    with col2:
+        st.success("**Nhóm Boomers & Gen X:** Tỷ lệ rời bỏ duy trì ở mức thấp (~15-16%). Đây là nhóm khách hàng trung thành, ưu tiên sự ổn định và tin tưởng[cite: 3].")
+
+    st.divider()
+
+    # 2. Chiến lược cụ thể cho từng nhóm tuổi
+    st.subheader("2. Đề xuất chiến lược theo nhóm khách hàng")
     
-    with col_b1:
-        st.markdown("""
-        ### 📍 1. Tối ưu theo Customer Segment
-        - Nhóm khách hàng **High Risk** cần được đưa vào chương trình chăm sóc đặc biệt (Loyalty Program).
-        - Triển khai các gói ưu đãi phí thường niên cho nhóm có Risk Score > 0.7.
-        
-        ### 📍 2. Tăng cường Độ trung thành
-        - Khách hàng có ít hơn 2 sản phẩm (`total_product`) có xu hướng rời bỏ cao.
-        - Chiến lược: **Cross-selling** thêm các dịch vụ bảo hiểm hoặc thẻ tín dụng với lãi suất ưu đãi.
+    with st.expander("🚀 Chiến lược cho Gen Z & Millenials (Nhóm rủi ro cao)"):
+        st.write("""
+        *   **Cá nhân hóa trải nghiệm số:** Tăng cường tính năng trên App Mobile vì nhóm này có hành vi 'digital_behavior' cao[cite: 3].
+        *   **Gamification:** Xây dựng hệ thống đổi điểm thưởng, săn voucher ngay trên ứng dụng để tăng 'engagement_score'.
+        *   **Sản phẩm linh hoạt:** Cung cấp các gói vay tiêu dùng nhanh hoặc thẻ tín dụng ảo với thủ tục đơn giản.
         """)
-    
-    with col_b2:
-        st.markdown("""
-        ### 📍 3. Hệ thống Cảnh báo Sớm (Early Warning)
-        - Tích hợp mô hình Stacking vào hệ thống CRM để chấm điểm rủi ro hàng ngày.
-        - Tự động hóa thông báo cho chuyên viên quan hệ khách hàng (RM) khi điểm rủi ro vượt ngưỡng 0.8.
-        
-        ### 📍 4. Vận hành & MLOps
-        - Sử dụng **LightGBM** làm mô hình chính nếu yêu cầu tốc độ xử lý hàng triệu dòng dữ liệu thời gian thực.
-        - Cập nhật (Retrain) mô hình hàng quý để tránh hiện tượng trôi dạt dữ liệu (Data Drift).
+
+    with st.expander("🛡️ Chiến lược cho Gen X & Boomers (Nhóm bền vững)"):
+        st.write("""
+        *   **Chăm sóc đặc quyền:** Tập trung vào các gói bảo hiểm, hưu trí hoặc quản lý tài sản (Wealth Management) cho phân khúc 'Priority'[cite: 3].
+        *   **Hỗ trợ đa kênh:** Kết hợp hỗ trợ trực tiếp tại quầy và điện thoại, vì nhóm này vẫn duy trì hành vi 'offline'[cite: 3].
+        *   **Ưu đãi lòng trung thành:** Tăng lãi suất tiết kiệm bậc thang dựa trên `tenure_ye` (số năm gắn bó).
         """)
+
+    st.divider()
+
+    # 3. Tối ưu hóa phân khúc (Customer Segment)
+    st.subheader("3. Hành động dựa trên phân khúc")
+    
+    seg_col1, seg_col2, seg_col3 = st.columns(3)
+    with seg_col1:
+        st.markdown("### 💎 Priority")
+        st.write("Duy trì trạng thái 'Active Member' bằng các ưu đãi phòng chờ sân bay, thẻ đen[cite: 3].")
+    with seg_col2:
+        st.markdown("### 📈 Emerging")
+        st.write("Kích thích sử dụng thêm dịch vụ (Cross-sell) để nâng hạng lên Priority[cite: 3].")
+    with seg_col3:
+        st.markdown("### 👥 Mass")
+        st.write("Tự động hóa chăm sóc qua chatbot để tối ưu chi phí nhưng vẫn đảm bảo kết nối[cite: 3].")
+
+    st.divider()
+
+    # 4. Đề xuất chiến lược tổng quát
+    st.subheader("4. Đề xuất chiến lược phù hợp với phân tích")
+    st.warning("Dựa trên phân tích SHAP và rủi ro (Risk Score), ngân hàng cần lưu ý[cite: 3]:")
+    
+    st.write("""
+    *   **Giám sát biến động số dư (Balance):** Dữ liệu cho thấy những khách hàng có số dư thay đổi đột ngột thường có xu hướng rời bỏ. Cần thiết lập hệ thống cảnh báo sớm (Early Warning System)[cite: 3].
+    *   **Nâng cao chỉ số Engagement:** Tập trung vào những khách hàng có `engagement_score` thấp (dưới 40) bằng các chiến dịch Email Marketing cá nhân hóa[cite: 3].
+    *   **Ưu tiên khách hàng có rủi ro thấp (Low Risk Segment):** Tập trung nguồn lực giữ chân nhóm `Low Risk` nhưng đang có dấu hiệu giảm tương tác để bảo vệ nguồn doanh thu ổn định[cite: 3].
+    """)
+
+        
     

@@ -266,7 +266,7 @@ with tabs[2]:
 
 # ---------------------------------------------------------
 
-with tab[3]:
+with tabs[3]:
     st.header("🎯 CHIẾN LƯỢC GIỮ CHÂN KHÁCH HÀNG (RETENTION STRATEGY)")
     
     # 1. Phân tích từ dữ liệu (Insight Driven)

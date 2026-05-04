@@ -175,7 +175,7 @@ with tabs[0]:
         giảm thiểu tỷ lệ khách hàng rời bỏ thông qua dữ liệu hành vi.
         """)
     with col_tech:
-        st.info("**Tech Stack:** SQL, Python, LightGBM, Stacking")
+        st.info("**Tech Stack:** SQL, Python, Streamlit")
 
     # Chia các bước lớn bằng expander hoặc markdown chuyên nghiệp
     st.subheader("🛠️ Các giai đoạn triển khai")

@@ -3,7 +3,7 @@
 
 **File 2 :** Query And Analyze Customers **(https://chiena12.github.io/VN_Bank_Churn_Analysis/SQL_Queries.html)** 
 
-This project integrates T-SQL Analytics with Ensemble Learning to build an automated risk-forecasting system, analyzing behavioral patterns of 80,000 customers in the Vietnamese banking sector.
+## This project integrates T-SQL Analytics with Ensemble Learning to build an automated risk-forecasting system, analyzing behavioral patterns of 80,000 customers in the Vietnamese banking sector.
 
 # 🌟 Key Features
 

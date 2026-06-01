@@ -1,5 +1,6 @@
 # 🏦 Vietnam Bank Churn Analysis & Early Warning System
 **File 1 :** EDA And Bulidinig Model **(https://chiena12.github.io/VN_Bank_Churn_Analysis/CodeFile.html)**
+
 **File 2 :** Query And Analyze Customers **(https://chiena12.github.io/VN_Bank_Churn_Analysis/SQL_Queries.html)** 
 
 This project integrates T-SQL Analytics with Ensemble Learning to build an automated risk-forecasting system, analyzing behavioral patterns of 80,000 customers in the Vietnamese banking sector.
